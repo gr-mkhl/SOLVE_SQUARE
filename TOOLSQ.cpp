@@ -12,7 +12,7 @@ int CompareDoubles( const double a, const double b)     //возвращает 0, если чис
 
 void CleanBuffer()
 {
-    int n;
+    int n = 0;
 
     while ((n = getchar()) != '\n' && n != EOF)
         continue;
@@ -25,7 +25,7 @@ int MyRandInt(int from, int to)
 
 void Swap(double * a, double * b)
 {
-  double * temp;
+  double * temp = NULL;
 
   temp = a;
   a = b;

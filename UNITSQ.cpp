@@ -3,7 +3,7 @@
 void RunOneTest(const TestSquare test)
 {
     double x1 = 0, x2 = 0;
-    int nRoots = SolveSquare(test.a, test.b, test.c, &x1, &x2);
+    int nRoots = SolveSquare(test.a, test.b, test.c, &x1, &x2);   //make NAN more user-friendly
 
     if (CompareDoubles(nRoots, test.nRootsRef) || ((CompareDoubles(test.x1Ref, x1) || CompareDoubles(test.x2Ref, x2)) && (CompareDoubles(test.x1Ref, x2) || CompareDoubles(test.x2Ref, x1))))
         printf("TEST ¹%d FAILED:\n"
@@ -52,9 +52,9 @@ void ClearSqTests(TestSquare * tests, int num)
     {
       tests[i].id = (i + 1);
       tests[i].nRootsRef = 0;
-      tests[i].a = NAN;
-      tests[i].b = NAN;
-      tests[i].c = NAN;
+      tests[i].a = 0;
+      tests[i].b = 0;
+      tests[i].c = 0;
       tests[i].x1Ref = NAN;
       tests[i].x2Ref = NAN;
     }

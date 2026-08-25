@@ -2,7 +2,8 @@
 #include "UNITSQ.h"
 #include "FILESQ.h"
 
-int main()
+int main()                                   //сделать менюшку рабочей
+                                             //исправить вывод пустых тестов
 {
     TestSquare tests[MAS_LEN] = {};
     int ch = 0;
@@ -31,9 +32,10 @@ int main()
                 break;
             default:
                 printf("!!!Invalid input!!!\n");
-             printf(MENU);
-             ClearBuffer();
+                break;
         }
+            printf(MENU);
+            CleanBuffer();
     }
     return 0;
 }

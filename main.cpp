@@ -12,27 +12,27 @@ int main()
     {
         switch(ch)
         {
-            case 1:
+            case '1':
                 GenerateSqVietTests(tests, MAS_LEN);
                 break;
-            case 2:
+            case '2':
                 ClearSqTests(tests, MAS_LEN);
                 break;
-            case 3:
+            case '3':
                 WriteSqTestsToFile(tests, MAS_LEN);
                 break;
-            case 4:
+            case '4':
                 ReadSqTestsFromFile(tests, MAS_LEN);
                 break;
-            case 5:
+            case '5':
                 RunAllTests(tests, MAS_LEN);
                 break;
             case EXIT:
                 break;
             default:
                 printf("!!!Invalid input!!!\n");
-
-            printf(MENU);
+             printf(MENU);
+             ClearBuffer();
         }
     }
     return 0;

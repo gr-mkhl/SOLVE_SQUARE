@@ -1,26 +1,7 @@
 #include "SOLVESQ.h"
 
-int SolveLinear(const double a, const double b, double * x);
+int SolveLinear(const double a, const double b, double* x);
 
-int SolveLinear(const double a, const double b, double * x)
-{
-    assert(x != nullptr);
-    if (CompareDoubles(a, 0) == EQUAL)
-    {
-        if (CompareDoubles(b, 0) == EQUAL)
-            return INF_ROOTS;
-        else
-            return NO_ROOTS;
-    }
-    else
-    {
-        if (CompareDoubles(b, 0) == EQUAL)
-            *x = 0;
-        else
-            *x = -b / a;
-        return ONE_ROOT;
-    }
-}
 int SolveSquare(const double a, const double b, const double c, double* x1, double* x2)
 {
     assert(x1 != x2);
@@ -56,6 +37,27 @@ int SolveSquare(const double a, const double b, const double c, double* x1, doub
             Swap(x1, x2);
         return TWO_ROOTS;
       }
+    }
+}
+
+int SolveLinear(const double a, const double b, double* const x)
+{
+    assert(x != nullptr);
+
+    if (CompareDoubles(a, 0) == EQUAL)
+    {
+        if (CompareDoubles(b, 0) == EQUAL)
+            return INF_ROOTS;
+        else
+            return NO_ROOTS;
+    }
+    else
+    {
+        if (CompareDoubles(b, 0) == EQUAL)
+            *x = 0;
+        else
+            *x = -b / a;
+        return ONE_ROOT;
     }
 }
 

@@ -3,9 +3,9 @@
 
 #include "ALL.h"
 
-int CompareDoubles( const double a, const double b);
+int CompareDoubles(const double a, const double b);
 void CleanBuffer();
-int MyRandInt(int from, int to);
-void Swap(double * a, double * b);
+int MyRandInt(const int from, const int to);
+void Swap(const double* a, const double* b);
 
 #endif

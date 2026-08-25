@@ -17,7 +17,7 @@ void RunOneTest(const TestSquare test)
         test.id, test.nRootsRef, test.x1Ref, test.x2Ref, nRoots, x1, x2);
 }
 
-void RunAllTests(TestSquare * tests, int num)
+void RunAllTests(const TestSquare* const tests, const int num)
 {
     assert(tests);
 
@@ -27,7 +27,7 @@ void RunAllTests(TestSquare * tests, int num)
 
 
 
-void GenerateSqVietTests(TestSquare * tests, int num)
+void GenerateSqVietTests(TestSquare* const tests, const int num)
 {
     assert(tests);
 
@@ -35,19 +35,16 @@ void GenerateSqVietTests(TestSquare * tests, int num)
     {
       tests[i].id = (i + 1);
       tests[i].a = 1;
-
       tests[i].x1Ref = MyRandInt(FROM, TO);
       tests[i].x2Ref = MyRandInt(FROM, TO);
       tests[i].nRootsRef = 2;
-
       tests[i].b = -(tests[i].x1Ref + tests[i].x2Ref);
       tests[i].c = tests[i].x1Ref * tests[i].x2Ref;
     }
 }
 
-void ClearSqTests(TestSquare * tests, int num)
+void ClearSqTests(TestSquare* const tests, const int num)
 {
-
     for (int i = 0; i < num; i++)
     {
       tests[i].id = (i + 1);

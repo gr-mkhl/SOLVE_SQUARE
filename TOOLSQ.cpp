@@ -1,6 +1,6 @@
 #include "TOOLSQ.h"
 
-int CompareDoubles( const double a, const double b)     //возвращает 0, если числа равны. 1, если первое число больше. -1, если первое число меньше.
+int CompareDoubles(const double a, const double b)     //возвращает 0, если числа равны. 1, если первое число больше. -1, если первое число меньше.
 {
     if ((a - b) > EPS)
         return MORE;
@@ -18,18 +18,19 @@ void CleanBuffer()
         continue;
 }
 
-int MyRandInt(int from, int to)
+int MyRandInt(const int from, const int to)
 {
     return (rand() % (to - from)) + from;
 }
 
-void Swap(double * a, double * b)
+void Swap(const double* a, const double* b)
 {
-  double * temp = NULL;
+  const double * temp = NULL;
 
   temp = a;
   a = b;
   b = temp;
-
 }
+
+
 

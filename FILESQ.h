@@ -3,7 +3,7 @@
 
 #include "ALL.h"
 
-int ReadSqTestsFromFile(TestSquare * tests, int mas_len);
-int WriteSqTestsToFile(TestSquare * tests, int mas_len);
+int ReadSqTestsFromFile(TestSquare* const tests, const int mas_len);
+int WriteSqTestsToFile(const TestSquare* const tests, const int mas_len);
 
 #endif

@@ -1,8 +1,8 @@
 #include "FILESQ.h"
 
-int MakeFileName(char * filename, unsigned int max_str);
+int MakeFileName(char* const filename, const unsigned int max_str);
 
-int MakeFileName(char * filename, unsigned int max_str)
+int MakeFileName(char* filename, const unsigned int max_str)
 {
     printf("Input file name:\n");
     scanf("%s", filename);
@@ -15,13 +15,14 @@ int MakeFileName(char * filename, unsigned int max_str)
     return 1;
 }
 
-int ReadSqTestsFromFile(TestSquare * tests, int mas_len)
+int ReadSqTestsFromFile(TestSquare* const tests, const int mas_len)                 //тут надо бы чето придумать с обработкой ошибок
 {
     assert(tests);
 
     char filename[FILE_SIZE] = {};
 
     assert(MakeFileName(filename, FILE_SIZE));
+
     FILE * f = fopen(filename, "r");
     assert(f);
 
@@ -45,14 +46,14 @@ int ReadSqTestsFromFile(TestSquare * tests, int mas_len)
     }
     fclose(f);
     return i;
-
 }
 
-int WriteSqTestsToFile(TestSquare * tests, int mas_len)
+int WriteSqTestsToFile(const TestSquare* const tests, const int mas_len)
 {
     assert(tests);
 
     char filename[FILE_SIZE] = {};
+
     assert(MakeFileName(filename, FILE_SIZE));
 
     FILE * f = fopen(filename, "w");
@@ -66,13 +67,14 @@ int WriteSqTestsToFile(TestSquare * tests, int mas_len)
         switch(tests[i].nRootsRef)
         {
             case 1:
-                fprintf(f, "%lg %s\n", tests[i].x1Ref, "NAN");
+                fprintf(f, "%lg\n", tests[i].x1Ref);
                 break;
             case 2:
                  fprintf(f, "%lg %lg\n", tests[i].x1Ref, tests[i].x2Ref);
                  break;
             default:
-                fprintf(f, "%s %s\n", "NAN", "NAN");
+                 fprintf(f, "\n");
+                 break;
         }
     }
     fclose(f);

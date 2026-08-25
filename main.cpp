@@ -2,10 +2,18 @@
 #include "UNITSQ.h"
 #include "FILESQ.h"
 
-int main()                                   //сделать менюшку рабочей
-                                             //исправить вывод пустых тестов
+void menu(TestSquare* const tests);
+
+int main()  //исправить вывод пустых тестов
 {
     TestSquare tests[MAS_LEN] = {};
+
+    menu(tests);
+    return 0;
+}
+
+void menu(TestSquare* const tests)
+{
     int ch = 0;
 
     printf(MENU);
@@ -43,5 +51,4 @@ int main()                                   //сделать менюшку рабочей
             printf(MENU);
             CleanBuffer();
     }
-    return 0;
 }

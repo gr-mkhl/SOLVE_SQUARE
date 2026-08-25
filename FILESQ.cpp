@@ -11,9 +11,7 @@ int MakeFileName(char * filename, unsigned int max_str)
     if (strstr(filename, ".txt"))
         ;
     else
-    {
         strcat(filename, ".txt");
-    }
     return 1;
 }
 
@@ -21,15 +19,14 @@ int ReadSqTestsFromFile(TestSquare * tests, int mas_len)
 {
     assert(tests);
 
-
     char filename[FILE_SIZE] = {};
 
     assert(MakeFileName(filename, FILE_SIZE));
-
     FILE * f = fopen(filename, "r");
     assert(f);
 
     int i = 0;
+
     while (fscanf(f, "%d %lg %lg %lg %d",&tests[i].id, &tests[i].a, &tests[i].b, &tests[i].c, &tests[i].nRootsRef) == 5 && i < mas_len)
     {
         switch(tests[i].nRootsRef)
@@ -55,17 +52,15 @@ int WriteSqTestsToFile(TestSquare * tests, int mas_len)
 {
     assert(tests);
 
-
     char filename[FILE_SIZE] = {};
-
     assert(MakeFileName(filename, FILE_SIZE));
-
 
     FILE * f = fopen(filename, "w");
     assert(f);
 
     int i = 0;
-    for (; i < mas_len; i++)
+
+    for (i = 0; i < mas_len; i++)
     {
         fprintf(f, "%d %lg %lg %lg %d ",tests[i].id, tests[i].a, tests[i].b, tests[i].c, tests[i].nRootsRef);
         switch(tests[i].nRootsRef)

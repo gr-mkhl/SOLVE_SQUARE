@@ -19,11 +19,15 @@ int SolveSquare(const double a, const double b, const double c, double* x1, doub
 
       if (CompareDoubles(discr, 0) == LESS)
       {
+        *x1 = *x2 = NAN;
         return NO_ROOTS;
       }
       else if (CompareDoubles(discr, 0) == EQUAL)
       {
-        *x1 = -b / (2 * a);
+        if (CompareDoubles(b, 0) == EQUAL)
+            *x1 = 0;
+        else
+            *x1 = -b / (2 * a);
         *x2 = NAN;
         return ONE_ROOT;
       }
@@ -47,9 +51,16 @@ int SolveLinear(const double a, const double b, double* const x)
     if (CompareDoubles(a, 0) == EQUAL)
     {
         if (CompareDoubles(b, 0) == EQUAL)
-            return INF_ROOTS;
+        {
+             *x = NAN;
+             return INF_ROOTS;
+        }
+
         else
+        {
+            *x = NAN;
             return NO_ROOTS;
+        }
     }
     else
     {

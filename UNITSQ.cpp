@@ -3,9 +3,9 @@
 void RunOneTest(const TestSquare test)
 {
     double x1 = 0, x2 = 0;
-    int nRoots = SolveSquare(test.a, test.b, test.c, &x1, &x2);   //make NAN more user-friendly
+    int nRoots = SolveSquare(test.a, test.b, test.c, &x1, &x2);   //make NAN è INF more user-friendly
 
-    if (CompareDoubles(nRoots, test.nRootsRef) || ((CompareDoubles(test.x1Ref, x1) || CompareDoubles(test.x2Ref, x2)) && (CompareDoubles(test.x1Ref, x2) || CompareDoubles(test.x2Ref, x1))))
+    if (nRoots != test.nRootsRef || ((CompareDoubles(test.x1Ref, x1) || CompareDoubles(test.x2Ref, x2)) && (CompareDoubles(test.x1Ref, x2) || CompareDoubles(test.x2Ref, x1))))
         printf("TEST ¹%d FAILED:\n"
         "EXPECTED:\n Number of roots = %-7d, Root1 = %-7lg, Root2 = %-7lg\n"
         "RECEIVED:\n Number of roots = %-7d, Root1 = %-7lg, Root2 = %-7lg\n\n",
@@ -22,7 +22,11 @@ void RunAllTests(const TestSquare* const tests, const int num)
     assert(tests);
 
     for (int i = 0; i < num; i++)
+    {
+        assert(0 <= i && i < num);
+
         RunOneTest(tests[i]);
+    }
 }
 
 
@@ -33,6 +37,8 @@ void GenerateSqVietTests(TestSquare* const tests, const int num)
 
     for (int i = 0; i < num; i++)
     {
+      assert(0 <= i && i < num);
+
       tests[i].id = (i + 1);
       tests[i].a = 1;
       tests[i].x1Ref = MyRandInt(FROM, TO);
@@ -47,8 +53,10 @@ void ClearSqTests(TestSquare* const tests, const int num)
 {
     for (int i = 0; i < num; i++)
     {
+      assert(0 <= i && i < num);
+
       tests[i].id = (i + 1);
-      tests[i].nRootsRef = 0;
+      tests[i].nRootsRef = INF_ROOTS;
       tests[i].a = 0;
       tests[i].b = 0;
       tests[i].c = 0;

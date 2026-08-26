@@ -1,12 +1,23 @@
 #include "ALL.h"
 #include "UNITSQ.h"
 #include "FILESQ.h"
+#include "STDINSQ.h"
 
 void menu(TestSquare* const tests);
 
 int main()  //исправить вывод пустых тестов
 {
-    TestSquare tests[MAS_LEN] = {};
+    TestSquare tests[MAS_LEN] = {
+                                    {0, 0, 0, NAN, NAN, 1, -1},
+                                    {0, 0, 1, NAN, NAN, 2, 0},
+                                    {0, 1, 0, 0, NAN, 3, 1},
+                                    {0, 1, 1, -1, NAN, 4, 1},
+                                    {1, 0, 0, 0, NAN, 5, 1},
+                                    {1, 0, 1, NAN, NAN, 6, 0},
+                                    {1, 1, 0, -1, 0, 7, 2},
+                                    {1, 1, 0, 0, -1, 8, 2},
+                                    {1, 1, 1, NAN, NAN, 9, 0}
+                                };
 
     menu(tests);
     return 0;
@@ -21,6 +32,9 @@ void menu(TestSquare* const tests)
     {
         switch(ch)
         {
+            case '0':
+                MenuSolveSquare();
+                break;
             case '1':
                 GenerateSqVietTests(tests, MAS_LEN);
                 printf("The generation was successful\n");

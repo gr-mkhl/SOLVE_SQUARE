@@ -6,6 +6,6 @@
 int CompareDoubles(const double a, const double b);
 void CleanBuffer();
 int MyRandInt(const int from, const int to);
-void Swap(const double* a, const double* b);
+void Swap(double* a, double* b);
 
 #endif

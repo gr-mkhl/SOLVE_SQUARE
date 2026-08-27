@@ -2,11 +2,12 @@
 
 int SolveLinear(const double a, const double b, double* x);
 
-int SolveSquare(const double a, const double b, const double c, double* x1, double* x2)
+int SolveSquare(const double a, const double b, const double c,
+                double* const x1, double* const x2)
 {
+    assert(x1);
+    assert(x2);
     assert(x1 != x2);
-    assert(x1 != nullptr);
-    assert(x2 != nullptr);
 
     if (CompareDoubles(a, 0) == EQUAL)
     {
@@ -46,7 +47,7 @@ int SolveSquare(const double a, const double b, const double c, double* x1, doub
 
 int SolveLinear(const double a, const double b, double* const x)
 {
-    assert(x != nullptr);
+    assert(x);
 
     if (CompareDoubles(a, 0) == EQUAL)
     {

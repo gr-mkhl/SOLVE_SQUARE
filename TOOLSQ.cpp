@@ -4,7 +4,7 @@ int CompareDoubles(const double a, const double b)     //возвращает 0, если числ
 {
     if ((a - b) > EPS)
         return MORE;
-    else if ((a - b) < -EPS)
+    else if ((a - b) < -EPS)                            //бл€€€€ обработка NAN раскидана по всей проге
         return LESS;
     else
         return EQUAL;
@@ -23,13 +23,16 @@ int MyRandInt(const int from, const int to)
     return (rand() % (to - from)) + from;
 }
 
-void Swap(const double* a, const double* b)
+void Swap(double* a, double* b)
 {
-  const double * temp = NULL;
+  assert(a);
+  assert(b);
+  assert(a != b);
 
-  temp = a;
-  a = b;
-  b = temp;
+  double temp = *a;
+
+  *a = *b;
+  *b = temp;
 }
 
 

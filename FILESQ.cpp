@@ -1,18 +1,22 @@
 #include "FILESQ.h"
 
-int MakeFileName(char* const filename, const unsigned int max_str);
+bool MakeFileName(char* const filename, const unsigned int max_str);
 
-int MakeFileName(char* filename, const unsigned int max_str)
+bool MakeFileName(char* filename, const unsigned int max_str)
 {
+    assert(filename);
+
     printf("Input file name:\n");
-    scanf("%s", filename);
+    bool status = scanf("%s", filename);
+    assert(status);
+
     if (max_str < strlen(filename) + strlen(".txt") + 1 /* символ '\0' */)
-        return 0;
+        return false;
     if (strstr(filename, ".txt"))
         ;
     else
         strcat(filename, ".txt");
-    return 1;
+    return true;
 }
 
 int ReadSqTestsFromFile(TestSquare* const tests, const int mas_len)                 //тут надо бы чето придумать с обработкой ошибок
@@ -20,8 +24,8 @@ int ReadSqTestsFromFile(TestSquare* const tests, const int mas_len)             
     assert(tests);
 
     char filename[FILE_SIZE] = {};
-
-    assert(MakeFileName(filename, FILE_SIZE));
+    bool status = MakeFileName(filename, FILE_SIZE);
+    assert(status);
 
     FILE * f = fopen(filename, "r");
     assert(f);
@@ -35,6 +39,7 @@ int ReadSqTestsFromFile(TestSquare* const tests, const int mas_len)             
         switch(tests[i].nRootsRef)
         {
             case ONE_ROOT:
+
                 fscanf(f, "%lg", &tests[i].x1Ref);
                 tests[i].x2Ref = NAN;
                 break;
@@ -61,7 +66,9 @@ int WriteSqTestsToFile(const TestSquare* const tests, const int mas_len)
     assert(tests);
 
     char filename[FILE_SIZE] = {};
-    assert(MakeFileName(filename, FILE_SIZE));
+    bool status = false;
+    status = MakeFileName(filename, FILE_SIZE);
+    assert(status);
 
     FILE * f = fopen(filename, "w");
     assert(f);
@@ -69,8 +76,6 @@ int WriteSqTestsToFile(const TestSquare* const tests, const int mas_len)
     int i = 0;
     for (i = 0; i < mas_len; i++)
     {
-        assert(0 <= i && i < mas_len);
-
         fprintf(f, "%d %lg %lg %lg %d ",tests[i].id, tests[i].a, tests[i].b, tests[i].c, tests[i].nRootsRef);
         switch(tests[i].nRootsRef)
         {

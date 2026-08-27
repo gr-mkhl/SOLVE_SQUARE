@@ -23,6 +23,11 @@ int MyRandInt(const int from, const int to)
     return (rand() % (to - from)) + from;
 }
 
+double MyRandDouble(const double from, const double to)
+{
+    return ((double) rand() / RAND_MAX) * (to - from)  + from;
+}
+
 void Swap(double* a, double* b)
 {
   assert(a);

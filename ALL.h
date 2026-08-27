@@ -16,9 +16,9 @@
 #define RETURN_COLOR "\033[0m"
 
 #define EPS 1E-10
-#define CORRECT_INPUT 1
-#define INCORRECT_INPUT 0
-#define MAS_LEN 10000
+#define CORRECT_FILE "good.txt"
+#define INCORRECT_FILE "bad.txt"
+#define MAS_LEN 12
 #define FILE_SIZE 50
 #define FROM -10000
 #define TO 10000
@@ -33,10 +33,12 @@ enum SIGNS {LESS = -1, EQUAL = 0, MORE = 1};
 
 struct TestSquare
 {
-    double a, b, c;
-    double x1Ref, x2Ref;
     int id;
     int nRootsRef;
+    double a, b, c;
+    double x1Ref, x2Ref;
+
+
 };
 
 #endif

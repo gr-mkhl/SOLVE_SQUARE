@@ -1,6 +1,7 @@
 #include "FILESQ.h"
 
 bool MakeFileName(char* const filename, const unsigned int max_str);
+void WriteOneSqTestToFile(FILE* f, const TestSquare* const tests);
 
 bool MakeFileName(char* filename, const unsigned int max_str)
 {
@@ -12,9 +13,7 @@ bool MakeFileName(char* filename, const unsigned int max_str)
 
     if (max_str < strlen(filename) + strlen(".txt") + 1 /* символ '\0' */)
         return false;
-    if (strstr(filename, ".txt"))
-        ;
-    else
+    if (strstr(filename, ".txt") == NULL)
         strcat(filename, ".txt");
     return true;
 }
@@ -31,7 +30,6 @@ int ReadSqTestsFromFile(TestSquare* const tests, const int mas_len)             
     assert(f);
 
     int i = 0;
-
     while (fscanf(f, "%d %lg %lg %lg %d",&tests[i].id, &tests[i].a, &tests[i].b, &tests[i].c, &tests[i].nRootsRef) == 5 && i < mas_len)
     {
         assert(0 <= i && i < mas_len);
@@ -70,35 +68,42 @@ int WriteSqTestsToFile(const TestSquare* const tests, const int mas_len)
     status = MakeFileName(filename, FILE_SIZE);
     assert(status);
 
-    FILE * f = fopen(filename, "w");
+    FILE* f = fopen(filename, "w");
     assert(f);
+
 
     int i = 0;
     for (i = 0; i < mas_len; i++)
     {
-        fprintf(f, "%d %lg %lg %lg %d ",tests[i].id, tests[i].a, tests[i].b, tests[i].c, tests[i].nRootsRef);
-        switch(tests[i].nRootsRef)
-        {
-            case ONE_ROOT:
-                fprintf(f, "%lg\n", tests[i].x1Ref);
-                break;
-            case TWO_ROOTS:
-                fprintf(f, "%lg %lg\n", tests[i].x1Ref, tests[i].x2Ref);
-                break;
-            case NO_ROOTS:
-                fprintf(f, "\n");
-                break;
-            case INF_ROOTS:
-                fprintf(f, "\n");
-                break;
-            default:
-                fprintf(f, "\n");
-                break;
-        }
+        WriteOneSqTestToFile(f, &tests[i]);
     }
     fclose(f);
     return i;
 }
 
 
+void WriteOneSqTestToFile(FILE* f, const TestSquare* const test)
+{
+    assert(f);
+
+    fprintf(f, "%d %lg %lg %lg %d ",test->id, test->a, test->b, test->c, test->nRootsRef);
+    switch(test->nRootsRef)
+    {
+        case ONE_ROOT:
+            fprintf(f, "%lg\n", test->x1Ref);
+            break;
+        case TWO_ROOTS:
+            fprintf(f, "%lg %lg\n", test->x1Ref, test->x2Ref);
+            break;
+        case NO_ROOTS:
+            fprintf(f, "\n");
+            break;
+        case INF_ROOTS:
+            fprintf(f, "\n");
+            break;
+        default:
+            assert(0);
+            break;
+    }
+}
 

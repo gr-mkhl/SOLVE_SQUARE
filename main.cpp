@@ -22,9 +22,9 @@ int main(int argc, char* argv[])
     TestSquare tests[MAS_LEN] = {
                                     {.id = 1,  .nRootsRef = INF_ROOTS, .a = 0, .b = 0, .c = 0,  .x1Ref = NAN, .x2Ref = NAN},
                                     {.id = 2,  .nRootsRef = NO_ROOTS,  .a = 0, .b = 0, .c = 1,  .x1Ref = NAN, .x2Ref = NAN},
-                                    {.id = 3,  .nRootsRef = ONE_ROOT,  .a = 0, .b = 1, .c = 0,  .x1Ref = 0,   .x2Ref = NAN},
+                                    {.id = 3,  .nRootsRef = ONE_ROOT,  .a = 0, .b = 1, .c = -7,  .x1Ref = 0,   .x2Ref = NAN},
                                     {.id = 4,  .nRootsRef = ONE_ROOT,  .a = 0, .b = 1, .c = 1,  .x1Ref = -1,  .x2Ref = NAN},
-                                    {.id = 5,  .nRootsRef = ONE_ROOT,  .a = 1, .b = 0, .c = 0,  .x1Ref = 0,   .x2Ref = NAN},
+                                    {.id = 5,  .nRootsRef = ONE_ROOT,  .a = 4, .b = 0, .c = 0,  .x1Ref = 0,   .x2Ref = NAN},
                                     {.id = 6,  .nRootsRef = NO_ROOTS,  .a = 1, .b = 0, .c = 1,  .x1Ref = NAN, .x2Ref = NAN},
                                     {.id = 7,  .nRootsRef = TWO_ROOTS, .a = 1, .b = 1, .c = 0,  .x1Ref = 0,   .x2Ref = -1 },
                                     {.id = 8,  .nRootsRef = TWO_ROOTS, .a = 1, .b = 1, .c = 0,  .x1Ref = 0,   .x2Ref = -1 },
@@ -106,7 +106,6 @@ void menu(TestSquare* const tests)
             case '7':
             {
                 /*double a = 0, b = 0, c = 0;
-
                 ScanSqEq(&a, &b, &c);  */
                 printf("Sorry, this feature is still in development\n");
                 break;
@@ -119,5 +118,6 @@ void menu(TestSquare* const tests)
                 break;
         }
             printf(MENU);
+            CleanBuffer();
     }
 }

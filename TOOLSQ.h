@@ -8,5 +8,6 @@ void CleanBuffer();
 int MyRandInt(const int from, const int to);
 double MyRandDouble(const double from, const double to);
 void Swap(double* a, double* b);
+bool IsBufEmpty();
 
 #endif

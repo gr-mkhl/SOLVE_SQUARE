@@ -40,5 +40,18 @@ void Swap(double* a, double* b)
   *b = temp;
 }
 
+bool IsBufEmpty()
+{
+    int ch = 0;
+
+    while ((ch = getchar()) == ' ')
+        continue;
+    if (ch == '\n' || ch == EOF)
+        return true;
+    return false;
+}
+
+
+
 
 

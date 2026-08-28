@@ -14,15 +14,11 @@ bool GetSquareCoeffs(double* a, double* b, double* c)
   {
       ungetc(ch, stdin);
 
-      if (scanf("%lg %lg %lg", a, b, c) == 3)
-      {
-        CleanBuffer();
+      if (scanf("%lg %lg %lg", a, b, c) == 3 && IsBufEmpty())
         return true;
-      }
       else
          printf(COLOR_RED "Incorrect input\n" RETURN_COLOR);
-
-      printf("Input coefficients(a b c) or q, if you want to finish\n");
+      printf("Input coefficients(a b c) or 'q', if you want to finish\n");
       CleanBuffer();
   }
   return false;
@@ -68,7 +64,6 @@ void PrintTestInfo(const TestSquare* const tests, const int mas_len)
     int test_id = 0;
 
     printf(COLOR_BLUE "Input test's id, or any another key if you want to finish:\n" RETURN_COLOR);
-
     while (scanf("%d", &test_id))
     {
         CleanBuffer();
@@ -131,7 +126,6 @@ void PrintSqEq(const double a, const double b, const double c)
         stat_a = true;
     }
 
-
     if (CompareDoubles(b, 1) == EQUAL)
     {
         if (stat_a == true)
@@ -165,7 +159,6 @@ void PrintSqEq(const double a, const double b, const double c)
         stat_b = true;
     }
 
-
     if (stat_a == true || stat_b == true)
     {
         if (CompareDoubles(c, 0) == LESS)
@@ -182,43 +175,24 @@ void PrintSqEq(const double a, const double b, const double c)
 /*void ScanSqEq(double* a, double* b, double* c)  это дерьмо в разработке
 {
     int i = 0, j = 0, n = 0;
-    char mas[10][10] = {};
+    char mas[10][20] = {};
 
-    while (scanf("%s", mas[i]) == 1 && (*mas[i] != '\n') && (*mas[i] != '='))
+    while (i < 10 && scanf("%s", mas[i]) == 1 && (*mas[i] != '\n') && (*mas[i] != '='))
     {
         i++;
         n++;
     }
     CleanBuffer();
-
     printf("¬сего %d строк\n", n);
-
     for (i = 0; i < n; i++)
     {
-    printf("[%d]: ", i);
+        printf("[%d]: ", i);
         for (j = 0; j < 10; j++)
         {
             printf("%c", mas[i][j]);
         }
         putchar('\n');
     }
-    if (n == 5)
-    {
-        *a = atof(mas[0]);
-        if (*mas[1] == '-')
-            *b = -atof(mas[2]);
-        else
-            *b = atof(mas[2]);
-        if (*mas[3] == '-')
-            *c = -atof(mas[4]);
-        else
-            *c = atof(mas[4]);
-    printf("a = %lg\nb = %lg\nc = %lg\n", *a, *b, *c);
-    }
-    else if (n == 3)
-
-        printf("бубубу\n");
-
 }
 */
 

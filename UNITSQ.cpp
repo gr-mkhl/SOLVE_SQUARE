@@ -40,9 +40,8 @@ void RunAllTests(bool console, const TestSquare* const tests, const int mas_len)
     assert(f_bad);
 
     for (int i = 0; i < mas_len; i++)
-    {
         RunOneTest(f_good, f_bad, tests[i]);
-    }
+
     if (f_good != stdout && f_bad != stdout)
     {
         fclose(f_good);

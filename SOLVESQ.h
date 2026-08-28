@@ -4,6 +4,6 @@
 #include "ALL.h"
 #include "TOOLSQ.h"
 
-int SolveSquare(const double a, const double b, const double c, double* x1, double* x2);
+int SolveSquare(const double a, const double b, const double c, double* const x1, double* const x2);
 
 #endif

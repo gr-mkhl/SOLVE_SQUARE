@@ -22,14 +22,16 @@
 #define FILE_SIZE 50
 #define FROM -10000
 #define TO 10000
+#define POWERS 10
+#define DELTA 2
 #define INFILENAME "in.txt"
 #define OUTFILENAME "out.txt"
 #define EXIT 'q'
 
 
-enum NUMOFROOTS {INF_ROOTS = -1, NO_ROOTS = 0, ONE_ROOT = 1, TWO_ROOTS = 2};
+ NUMOFROOTS {INF_ROOTS = -1, NO_ROOTS = 0, ONE_ROOT = 1, TWO_ROOTS = 2};
 
-enum SIGNS {LESS = -1, EQUAL = 0, MORE = 1};
+ SIGNS {LESS = -1, EQUAL = 0, MORE = 1};
 
 struct TestSquare
 {
@@ -39,6 +41,12 @@ struct TestSquare
     double x1Ref, x2Ref;
 
 
+};
+
+struct EqCoeffs
+{
+    double Pows[POWERS + 1];
+    int MaxPow;
 };
 
 #endif
